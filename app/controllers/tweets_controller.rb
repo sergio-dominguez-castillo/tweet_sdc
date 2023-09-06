@@ -3,7 +3,8 @@ class TweetsController < ApplicationController
 
   # GET /tweets or /tweets.json
   def index
-    @tweets = Tweet.all
+    #@tweets = Tweet.all
+    @pagy, @tweets = pagy(Tweet.all.order(created_at: :desc))
   end
 
   # GET /tweets/1 or /tweets/1.json
@@ -56,6 +57,8 @@ class TweetsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
