@@ -34,13 +34,16 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0 navbar-dark">
           <li class="nav-item">
+            <%= link_to 'Home', tweets_path, class:"nav-link"  %>
+          </li>
+          <li class="nav-item">
             <%= link_to "New tweet", new_tweet_path, class:"nav-link" %>
           </li>
           <li class="nav-item">
-            <%=link_to 'Series', series_index_path, class:"nav-link"  %>
-          </li>
-          <li class="nav-item">
-            <%=link_to 'Documentary_Films', documentary_films_index_path, class:"nav-link"  %>
+            <%# =link_to 'Documentary_Films', documentary_films_index_path, class:"nav-link"  %>
+            <%= form_with url: tweets_path, method: :get do |form| %>
+              <%= form.text_field :query_text, placeholder: t('Query text'), value: params[:query_text] %>
+              <% end %>
           </li>
         </ul>
       </div>
